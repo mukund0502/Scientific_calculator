@@ -8,35 +8,35 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div class="calc w-fit m-auto my-10 border-emerald-800 p-2 py-3 text-black bg-slate-400 rounded-lg shadow-2xl">
-        <div class="display rounded-md h-10 w-full  my-3 bg-white text-3xl align-baseline px-1 py-auto flex flex-row "> 
+    <div class="calc w-fit m-auto my-10 border-emerald-800 p-2 py-3 text-black bg-slate-300 rounded-lg shadow-2xl">
+        <div class="display rounded-md h-10 w-full  my-3 bg-white text-3xl align-baseline px-1 py-auto flex flex-row select-none shadow-lg "> 
             <div id="symbol" class=" w-1/10 h-full align-middle text-xl text-left "></div>
-            <div id="number" class=" w-full text-right">0</div>
+            <div id="number" class=" w-full text-right select-none ">0</div>
         </div>
         <div class="buttons flex flex-col w-fit m-auto">
             <div class="rows flex flex-row w-fit">
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="seven">7</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="eight">8</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="nine">9</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="div">/</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 " id="seven">7</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="eight">8</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="nine">9</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="div">/</div>
             </div>
             <div class="rows flex flex-row w-fit">
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="four">4</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="five">5</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="six">6</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="mul">*</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="four">4</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="five">5</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="six">6</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="mul">*</div>
             </div>
             <div class="rows flex flex-row w-fit">
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="one">1</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="two">2</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="three">3</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="minus">-</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="one">1</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="two">2</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="three">3</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="minus">-</div>
             </div>
             <div class="rows flex flex-row w-fit">
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="zero">0</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="dot">C</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="add">+</div>
-                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 " id="equal">=</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="zero">0</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="dot">C</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="add">+</div>
+                <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400" id="equal">=</div>
             </div>
         </div>
     </div>
