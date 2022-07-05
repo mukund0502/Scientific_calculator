@@ -20,6 +20,7 @@ var clear = document.getElementById("clear");
 var time = document.getElementById("time");
 var date = document.getElementById("date");
 var pull = document.getElementById("pull");
+
 var scientific = document.getElementsByClassName("scientific1");
 
 const log = document.getElementById("log");
