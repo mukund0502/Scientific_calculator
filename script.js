@@ -209,6 +209,7 @@ function calculate() {
 }
 
 function scientificcalculate() {
+    //left part 
     console.log(scientificarray.join(""));
 }
 // function clear() {
@@ -289,8 +290,12 @@ equal.addEventListener("click", () => {
         scientificcalculate();
     }
 });
-console.log(Math.E);
-console.log(Math.PI);
+
+
+// console.log(Math.E);
+// console.log(Math.PI);
+
+
 function clearr() {
     left = 0;
     operation = 0;
@@ -298,8 +303,10 @@ function clearr() {
     number.innerHTML = 0;
     scientificarray = [];
     scientificnums = 0;
+    decimal = 0;
 }
 function backspace() {
+    decimal = 0;
     scientificarray.pop();
     scientificnums = 0;
     number.innerHTML = scientificarray.join("");
