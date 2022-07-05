@@ -53,7 +53,7 @@ pull.addEventListener("click", () => {
         calc.style.backgroundColor = "rgb(252 165 165)";
         pull.style.backgroundColor = "rgb(252 165 165)";
 
-        
+
     } else {
         Array.from(document.getElementsByClassName('scientific1')).forEach(elem => {
             elem.style.display = "none";
@@ -72,7 +72,7 @@ var timee = new Date();
 month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var str = "th";
 
-switch (timee.getDate()%10) {
+switch (timee.getDate() % 10) {
     case 1:
         str = "st";
         break;
@@ -87,37 +87,39 @@ switch (timee.getDate()%10) {
         break;
 }
 
-date.innerHTML = timee.getDate() +str + " " + month[timee.getMonth()] + " " + timee.getFullYear();
+date.innerHTML = timee.getDate() + str + " " + month[timee.getMonth()] + " " + timee.getFullYear();
 setInterval(() => {
     var amorpm = "PM";
     if (timee.getHours() < 13) {
         amorpm = "AM";
     }
     timee = new Date();
-    var min ;
-    if (timee.getMinutes()==0) {
-        min='00'
-    }else if (timee.getMinutes()<10) {
-        min='0'+timee.getMinutes()
-    }else{
+    var min;
+    if (timee.getMinutes() == 0) {
+        min = '00'
+    } else if (timee.getMinutes() < 10) {
+        min = '0' + timee.getMinutes()
+    } else {
         min = timee.getMinutes();
     }
-    var sec ;
-    if (timee.getSeconds()==0) {
-        sec='00'
-    }else if (timee.getSeconds()<10) {
-        sec='0'+timee.getSeconds()
-    }else{
+    var sec;
+    if (timee.getSeconds() == 0) {
+        sec = '00'
+    } else if (timee.getSeconds() < 10) {
+        sec = '0' + timee.getSeconds()
+    } else {
         sec = timee.getSeconds();
     }
     // console.log(min);
-    time.innerHTML = (timee.getHours()<10 ? ("0"+timee.getHours()% 12) :(timee.getHours()% 12))  + ":" + min + ":" +sec + " " + amorpm;
+    time.innerHTML = (timee.getHours() < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
 }, 1000);
 //timedate ended
 
-scientificstring=[];
+// scientificarray.push(34);
+// console.log(scientificarray.join(""));
+var scientificarray = [];
 scientificnums = 0;
-
+var decimal = 0;
 
 var operation = 0;
 function numberadding(n) {
@@ -126,25 +128,40 @@ function numberadding(n) {
     if (pull.innerHTML == 'scientific calc') {
         number.innerHTML = left;
     } else {
-        if ((Number(scientificnums) === scientificnums) && (scientificnums % 1 !== 0)) {
-            //float
-            temp = 10;
-            while ((scientificnums % 1 !== 0)) {
-                temp*=10;
-            }
-            if (n !='.') {
-                scientificnums+=n/temp
-            }
-        }else{
-            if (n!='.') {
-                scientificnums*=10;
-                scientificnums+=n;
-            }else{
-                scientificnums
-            }
+
+        if ((n == dot.innerHTML) && (decimal == 0)) {
+            scientificarray.pop();
+            // scientificnums+=n;
+            decimal = 1;
+            scientificarray.push(scientificnums);
+            number.innerHTML = scientificarray.join("") + '.';
         }
-        scientificnums*=10;
-        scientificnums+=n;
+        else if ((n != dot.innerHTML) && (decimal == 0)) {
+            if (Number(scientificarray[scientificarray.length - 1])) {
+                scientificnums = scientificarray[scientificarray.length - 1];
+                scientificarray.pop();
+            }
+            scientificnums *= 10;
+            scientificnums += n;
+            scientificarray.push(scientificnums);
+            number.innerHTML = scientificarray.join("");
+
+        }
+        else if ((n != dot.innerHTML) && (decimal > 0)) {
+            scientificarray.pop();
+            var temp2 = (Math.pow(10, -decimal));
+            console.log(temp2);
+            console.log(n*temp2);
+            scientificnums += (n * temp2)
+            decimal++;
+            scientificarray.push(scientificnums);
+            number.innerHTML = scientificarray.join("");
+        }
+
+
+        console.log(scientificnums);
+        console.log(decimal);
+
     }
 }
 
@@ -191,38 +208,38 @@ function calculate() {
     symbol.innerHTML = "=";
 }
 
-function clear() {
-    left = 0;
-    operation = 0;
-    number.innerHTML = 0;
-    scientificstring = "";
+function scientificcalculate() {
+    console.log(scientificarray.join(""));
 }
+// function clear() {
+//     left = 0;
+//     operation = 0;
+//     number.innerHTML = 0;
+//     scientificnums = 0;
+//     scientificarray = [];
+// }
 
 function addscientific(n) {
     if ((n == log.innerHTML) || (n == sin.innerHTML) || (n == cos.innerHTML) || (n == tan.innerHTML) || (n == ln.innerHTML) || (n == root.innerHTML)) {
         //log ln cos tan sin root 
-        scientificstring += n + '(';
+        scientificarray.push(n + '(');
     }
     else if (n == fact.innerHTML) {
         // ! (factorial)
-        scientificstring += n + '!';
-    }
-    else if (n == dot.innerHTML) {
-        // decimal 
-        if ((scientificstring.length) == 0) {
-            scientificstring += 0 + '.';
-        } else if (scientificstring[scientificstring.length - 1] == '.') {
-
-        } else {
-            scientificstring += '.';
-        }
+        scientificarray.push('!');
     }
     else {
         // + - * / e pi % ( ) 
-        scientificstring += n;
+        scientificarray.push(n);
     }
-    number.innerHTML = scientificstring;
+    scientificnums = 0;
+    decimal = 0;
+    number.innerHTML = scientificarray.join("");
 }
+
+
+
+
 one.addEventListener("click", () => numberadding(1));
 two.addEventListener("click", () => numberadding(2));
 three.addEventListener("click", () => numberadding(3));
@@ -272,16 +289,20 @@ equal.addEventListener("click", () => {
         scientificcalculate();
     }
 });
-
+console.log(Math.E);
+console.log(Math.PI);
 function clearr() {
     left = 0;
     operation = 0;
     symbol.innerHTML = "";
     number.innerHTML = 0;
-    scientificstring = "";
+    scientificarray = [];
+    scientificnums = 0;
 }
 function backspace() {
-
+    scientificarray.pop();
+    scientificnums = 0;
+    number.innerHTML = scientificarray.join("");
 }
 clear.addEventListener("click", () => clearr());
 
@@ -298,7 +319,7 @@ e.addEventListener("click", () => addscientific(e.innerHTML));
 rightbrac.addEventListener("click", () => addscientific(rightbrac.innerHTML));
 leftbrac.addEventListener("click", () => addscientific(leftbrac.innerHTML));
 percent.addEventListener("click", () => addscientific(percent.innerHTML));
-power.addEventListener("click", () => backspace()); 
+power.addEventListener("click", () => backspace());
 
 
 //calculator code
