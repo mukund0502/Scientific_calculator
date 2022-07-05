@@ -70,14 +70,48 @@ pull.addEventListener("click", () => {
 //time zone
 var timee = new Date();
 month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-date.innerHTML = timee.getDate() + " " + month[timee.getMonth()] + " " + timee.getFullYear();
+var str = "th";
+
+switch (timee.getDate()%10) {
+    case 1:
+        str = "st";
+        break;
+    case 2:
+        str = "nd"
+        break;
+    case 3:
+        str = "rd"
+        break;
+    default:
+        str = "th"
+        break;
+}
+
+date.innerHTML = timee.getDate() +str + " " + month[timee.getMonth()] + " " + timee.getFullYear();
 setInterval(() => {
     var amorpm = "PM";
     if (timee.getHours() < 13) {
         amorpm = "AM";
     }
     timee = new Date();
-    time.innerHTML = timee.getHours() % 12 + ":" + timee.getMinutes() + ":" + timee.getSeconds() + " " + amorpm;
+    var min ;
+    if (timee.getMinutes()==0) {
+        min='00'
+    }else if (timee.getMinutes()<10) {
+        min='0'+timee.getMinutes()
+    }else{
+        min = timee.getMinutes();
+    }
+    var sec ;
+    if (timee.getSeconds()==0) {
+        sec='00'
+    }else if (timee.getSeconds()<10) {
+        sec='0'+timee.getSeconds()
+    }else{
+        sec = timee.getSeconds();
+    }
+    // console.log(min);
+    time.innerHTML = (timee.getHours()<10 ? ("0"+timee.getHours()% 12) :(timee.getHours()% 12))  + ":" + min + ":" +sec + " " + amorpm;
 }, 1000);
 //timedate ended
 
