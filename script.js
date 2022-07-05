@@ -149,10 +149,10 @@ function numberadding(n) {
         }
         else if ((n != dot.innerHTML) && (decimal > 0)) {
             scientificarray.pop();
-            var temp2 = (Math.pow(10, -decimal));
+            var temp2 = (Math.pow(10, decimal));
             console.log(temp2);
-            console.log(n*temp2);
-            scientificnums += (n * temp2)
+            console.log(n/temp2);
+            scientificnums += (n / temp2)
             decimal++;
             scientificarray.push(scientificnums);
             number.innerHTML = scientificarray.join("");
