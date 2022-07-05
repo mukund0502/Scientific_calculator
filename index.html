@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <title>Calculator</title>
 </head>
 
@@ -13,71 +17,100 @@
     <div id="time" class="mx-auto w-fit text-3xl mt-7 mb-0 ">
 
     </div>
-    <br>
+    <br>    
     <div class="date w-fit mx-auto my-0 text-lg" id="date"></div>
     <div>
+        <div class="notice  ">Scientific Calculator is under progress</div>
         <div
-            class="calc w-fit m-auto mt-5 border-emerald-800 p-2 py-3 text-black bg-slate-300 rounded-lg shadow-2xl z-4">
+            id="calc" class="w-fit m-auto mt-5 border-emerald-800 p-2 py-3 text-black bg-slate-300 rounded-lg shadow-2xl transition-all duration-300 ease-in">
             <div
-                class="display rounded-md h-10 w-full  my-3 bg-white text-3xl align-baseline px-1 py-auto flex flex-row select-none shadow-lg ">
-                <div id="symbol" class=" w-1/10 h-full align-middle text-xl text-left "></div>
-                <div id="number" class=" w-full text-right select-none ">0</div>
+                class="display rounded-md h-14 w-full text-4xl my-3 mb-5 bg-white align-middle px-1 py-auto flex flex-row select-none shadow-lg ">
+                <div id="symbol" class=" w-1/10 h-full align-middle text-2xl text-left "></div>
+                <div id="number" class=" w-full h-full align-middle text-right select-none ">0</div>
             </div>
-            <div class="buttons flex flex-col w-fit m-auto">
+            <div class="buttons flex flex-col w-fit m-auto transition-all ease-in duration-200">
+                <div class="rows scientific1 flex-row w-fit transition-all duration-200 ease-out" id="scientific">
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
+                        id="sin">sin</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
+                        id="factorial">x!</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
+                        id="leftbrac">(</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="rightbrac">)</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="percent">%</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="dot">.</div>
+                </div>
                 <div class="rows flex flex-row w-fit">
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
+                        id="cos">cos</div>
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
+                        id="log">log</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all "
                         id="seven">7</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="eight">8</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="nine">9</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
-                        id="div">/</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="div">&#247</div>
                 </div>
                 <div class="rows flex flex-row w-fit">
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="tan">tan</div>
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="ln">ln</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="four">4</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="five">5</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="six">6</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
-                        id="mul">*</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="mul">&#215</div>
                 </div>
                 <div class="rows flex flex-row w-fit">
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="root">&#8730</div>
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="e">e</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="one">1</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="two">2</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="three">3</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="minus">-</div>
                 </div>
                 <div class="rows flex flex-row w-fit">
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="pi">&#960</div>
+                    <div class="cols scientific1 flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="power">&#8592</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="zero">0</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
-                        id="dot">C</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                        id="clear">AC</div>
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="add">+</div>
-                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-10 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
+                    <div class="cols flex flex-col m-1 h-10 text-center text-lg w-12 p-2 cursor-pointer align-middle font-bold text-black bg-white rounded-md hover:bg-slate-300 select-none shadow-lg ease-in duration-400 transition-all"
                         id="equal">=</div>
                 </div>
             </div>
         </div>
-        <div class="pull text-center w-10 h-10 m-auto relative -left-12 text-2xl shadow-2xl rounded-b-lg z-0 bg-slate-300 text-red-500 ease-in duration-300 transition-all cursor-pointer">
-            M</div>
+        <div class="pull text-center w-fit h-fit px-2 py-1 m-auto relative select-none -left-12 text- shadow-2xl rounded-b-lg z-0 bg-slate-300 text-red-500 ease-in duration-300 transition-all cursor-pointer" id="pull">scientific calc</div>
     </div>
     <footer class="absolute bottom-0 right-0 m-5 text-right  flex flex-row">
-        <div class="mx-4 hover:text-red-600 hover:underline ">Home</div>
-        <div class="mx-4 hover:text-red-600 hover:underline">About</div>
-        <div class="mx-4 hover:text-red-600 hover:underline">Privacy Policy</div>
-        <div class="mx-4 hover:text-red-600 hover:underline"><a href="mailto:mukundwh8@gmail.com">Mail</a></div>
-
-
+        <!-- <div class="mx-4 hover:text-red-600 hover:underline text-sm sm:text-xl">Home</div>
+        <div class="mx-4 hover:text-red-600 hover:underline text-sm sm:text-xl">About</div>
+        <div class="mx-4 hover:text-red-600 hover:underline text-sm sm:text-xl">Privacy Policy</div> -->
+        <div class="mx-4 hover:text-red-600 hover:underline text-sm sm:text-xl"><a href="mailto:mukundwh8@gmail.com">Mail</a></div>
     </footer>
 </body>
 <script src="script.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
 </html>
