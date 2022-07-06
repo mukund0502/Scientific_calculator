@@ -94,6 +94,14 @@ setInterval(() => {
         amorpm = "AM";
     }
     timee = new Date();
+    var hour;
+    if (timee.getHours() == 0) {
+        hour = '00'
+    } else if (timee.getHours() < 10) {
+        hour = '0' + timee.getHours()
+    } else {
+        hour = timee.getHours();
+    }
     var min;
     if (timee.getMinutes() == 0) {
         min = '00'
@@ -111,7 +119,7 @@ setInterval(() => {
         sec = timee.getSeconds();
     }
     // console.log(min);
-    time.innerHTML = (timee.getHours() < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
+    time.innerHTML = (timee.getHours()%12 < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
 }, 1000);
 //timedate ended
 
@@ -131,7 +139,6 @@ function numberadding(n) {
 
         if ((n == dot.innerHTML) && (decimal == 0)) {
             scientificarray.pop();
-            // scientificnums+=n;
             decimal = 1;
             scientificarray.push(scientificnums);
             number.innerHTML = scientificarray.join("") + '.';
