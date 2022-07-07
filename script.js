@@ -71,8 +71,8 @@ pull.addEventListener("click", () => {
 
 })
 
-
 //time zone
+
 var timee = new Date();
 month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var str = "th";
@@ -126,10 +126,11 @@ setInterval(() => {
     // console.log(min);
     time.innerHTML = (timee.getHours() % 12 < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
 }, 1000);
-//timedate ended
 
+//timedate ended
 // scientificarray.push(34);
 // console.log(scientificarray.join(""));
+
 var scientificarray = [];
 scientificnums = 0;
 var decimal = 0;
@@ -279,9 +280,6 @@ function addscientific(n) {
     number.innerHTML = scientificarray.join("");
 }
 
-
-
-
 one.addEventListener("click", () => numberadding(1));
 two.addEventListener("click", () => numberadding(2));
 three.addEventListener("click", () => numberadding(3));
@@ -322,13 +320,6 @@ div.addEventListener("click", () => {
     }
 });
 
-
-
-
-// console.log(Math.E);
-// console.log(Math.PI);
-
-
 function clearr() {
     left = 0;
     operation = 0;
@@ -363,11 +354,6 @@ leftbrac.addEventListener("click", () => addscientific(leftbrac.innerHTML));
 percent.addEventListener("click", () => addscientific(percent.innerHTML));
 power.addEventListener("click", () => backspace());
 
-
-//example
-// arr = [88,'+',98.54,'sin(',32,'sin(',32,')',')',"cos(",876,')','+',4,'!'];
-// console.log(arr);
-var key = true;
 function factorial(n){
     var sol = n;
     console.log(n);
@@ -472,7 +458,6 @@ function redesign(array) {
         array.push(')');
     }
 }
-
 
 function solvescientific(array) {
     var ans = 1;
@@ -680,8 +665,3 @@ equal.addEventListener("click", () => {
         abccc(scientificarray);
     }
 });
-//calculate 
-
-
-//calculator code
-
