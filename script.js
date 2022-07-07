@@ -119,7 +119,7 @@ setInterval(() => {
         sec = timee.getSeconds();
     }
     // console.log(min);
-    time.innerHTML = (timee.getHours()%12 < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
+    time.innerHTML = (timee.getHours() % 12 < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
 }, 1000);
 //timedate ended
 
@@ -157,8 +157,8 @@ function numberadding(n) {
         else if ((n != dot.innerHTML) && (decimal > 0)) {
             scientificarray.pop();
             var temp2 = (Math.pow(10, decimal));
-            console.log(n/temp2);
-            scientificnums = (scientificnums+ (n / temp2));
+            console.log(n / temp2);
+            scientificnums = (scientificnums + (n / temp2));
             console.log(scientificnums.toFixed(decimal));
             scientificarray.push(scientificnums.toFixed(decimal));
             number.innerHTML = scientificarray.join("");
@@ -230,13 +230,32 @@ function addscientific(n) {
         //log ln cos tan sin root 
         scientificarray.push(n + '(');
     }
-    else if (n == fact.innerHTML) {
+    else if ((n == fact.innerHTML) || (n == percent.innerHTML)) {
         // ! (factorial)
-        scientificarray.push('!');
+        if (scientificarray.length != 0) {
+
+            scientificarray.push('!');
+        }
+        else {
+            number.innerHTML = "0";
+
+        }
+    }
+    else if ((n == e.innerHTML) || (n == pi.innerHTML) || (n == leftbrac.innerHTML) || (n == rightbrac.innerHTML)) {
+        // e pi ( )
+        scientificarray.push(n);
     }
     else {
-        // + - * / e pi % ( ) 
-        scientificarray.push(n);
+        // + - * / %
+        var top = scientificarray[scientificarray.length - 1];
+        if ((top == add.innerHTML) || (top == minus.innerHTML) || (top == mul.innerHTML) || (top == div.innerHTML)) {
+
+            scientificarray.pop();
+            scientificarray.push(n);
+        }
+        else {
+            scientificarray.push(n);
+        }
     }
     scientificnums = 0;
     decimal = 0;
@@ -288,14 +307,6 @@ div.addEventListener("click", () => {
 
 
 
-equal.addEventListener("click", () => {
-    if (pull.innerHTML == 'scientific calc') {
-        calculate();
-    } else {
-        scientificcalculate();
-    }
-});
-
 
 // console.log(Math.E);
 // console.log(Math.PI);
@@ -332,6 +343,308 @@ rightbrac.addEventListener("click", () => addscientific(rightbrac.innerHTML));
 leftbrac.addEventListener("click", () => addscientific(leftbrac.innerHTML));
 percent.addEventListener("click", () => addscientific(percent.innerHTML));
 power.addEventListener("click", () => backspace());
+
+
+//example
+arr = [88,'+',98.54,'sin(',32,'sin(',32,')',')',"cos(",876,')','+',4,'!'];
+console.log(arr);
+function factorial(n){
+    var sol = n;
+    if (Number(n) && (n%1==0)) {
+        while (n>1) {
+            n--;
+            sol *=n;
+        }
+    }
+
+    return sol;
+
+}
+var ekavalue = Math.E;
+var pikavalue = Math.PI;
+
+function redesign(array) {
+    for (let index = 0; index < array.length; index++) {
+        switch (array[index]) {
+            case sin.innerHTML:
+                array[index] = "sin(";
+                break;
+        
+            case cos.innerHTML:
+                array[index] = "cos(";
+                break;
+        
+            case tan.innerHTML:
+                array[index] = "tan(";
+                break;
+        
+            case log.innerHTML:
+                array[index] = "log(";
+                break;
+        
+            case ln.innerHTML:
+                array[index] = "ln(";
+                break;
+        
+            case root.innerHTML:
+                array[index] = "rt";
+                break;
+        
+            case pi.innerHTML:
+                array[index] = pikavalue;
+                break;
+        
+            case e.innerHTML:
+                array[index] = ekavalue;
+                break;
+        
+            case fact.innerHTML:
+                array[index] = '!';
+                break;
+        
+            case percent.innerHTML:
+                array[index] = '%';
+                break;
+        
+        
+            case mul.innerHTML:
+                array[index] = '*';
+                break;
+        
+            case div.innerHTML:
+                array[index] = '/';
+                break;
+        
+            case add.innerHTML:
+                array[index] = '+';
+                break;
+        
+            case minus.innerHTML:
+                array[index] = '-';
+                break;
+        
+            default:
+                break;
+        }
+    }
+}
+
+
+function solvescientific(array) {
+    var ans = 1;
+    for (let index = 0; index < array.length; index++) {
+        switch (array[index]) {
+            case sin.innerHTML+'(':
+                array[index] = "sin";
+                array.splice(index+1,0,'(');
+                break;
+            case log.innerHTML+'(':
+                array[index] = "log";
+            array.splice(index+1,0,'(');
+                break;
+            case ln.innerHTML+'(':
+                array[index] = "ln";
+            array.splice(index+1,0,'(');
+                break;
+            case tan.innerHTML+'(':
+                array[index] = "tan";
+            array.splice(index+1,0,'(');
+                break;
+            case cos.innerHTML+'(':
+                array[index] = "cos";
+            array.splice(index+1,0,'(');
+                break;
+            case root.innerHTML+'(':
+                array[index] = "&#8730";
+            array.splice(index+1,0,'(');
+                break;
+            default:
+                break;
+        }
+    }
+    while (array.includes('(')) {
+        var k = 0;
+        var leftindex = -1;
+        var rightindex = -1;
+        while (k<array.length) {
+            if (array[k]=='(') {
+                leftindex = k;
+    
+            }
+            k++;
+        }
+        var ll = leftindex;
+        while (ll<array.length) {
+            if (array[ll]==')') {
+                rightindex = ll ;
+                break;
+            }
+            ll++;
+        }
+        
+        if ((leftindex!=-1)&&(rightindex!=-1)) {
+            array[leftindex] = '?';
+            array[rightindex] = "$";
+            var temp=[];
+            for (let i = leftindex+1; i < rightindex; i++) {
+                temp.push(array[i]);
+            }
+            array.splice(leftindex,(rightindex-leftindex+1))
+            array.splice(leftindex,0,solvescientific(temp))
+        }
+    }
+    // console.log(array);
+
+    for (let index = 0; index < array.length; index++) {
+        if (array[index]=='!') {
+            array[index-1] = factorial(array[index-1]);
+            array.splice(index,1);
+        }
+    }
+    for (let index = 0; index < array.length; index++) {
+        switch (array[index]) {
+            case "sin":
+                array[index] = Math.sin(array[index+1]);
+                array.splice(index+1,1);
+                break;
+            case "cos":
+                array[index] = Math.cos(array[index+1]);
+                array.splice(index+1,1);
+                break;
+            case "tan":
+                array[index] = Math.tan(array[index+1]);
+                array.splice(index+1,1);
+                break;
+            case "log":
+                array[index] = Math.log10(array[index+1]);
+                array.splice(index+1,1);
+                break;
+            case "ln":
+                array[index] = Math.log2(array[index+1]);
+                array.splice(index+1,1);
+                break;
+            case "&#8730":
+                array[index] = Math.sqrt(array[index+1]);
+                array.splice(index+1,1);
+                break;
+            default:
+                break;
+        }
+        
+    }
+    var chut = [];
+    for (let int = 0; int < array.length; int++) {
+        if (Number(array[int])) {
+            ans*=array[int];
+            if (int==array.length-1) {
+                chut.push(ans);
+            }
+        }        
+        else{
+            switch (array[int]) {
+                case '*':
+                    ans*=array[int+1];
+                    if (int==array.length-2) {
+                        chut.push(ans);
+                    }
+                    break;
+                case '/':
+                    ans/=array[int+1];
+                    if (int==array.length-2) {
+                        chut.push(ans);
+                    }
+                    break;
+                case '%':
+                    ans/=100;
+                    if (int==array.length-1) {
+                        chut.push(ans);
+                    }
+                    int--;
+                    break;
+            
+                default:
+                    chut.push(ans);
+                    chut.push(array[int]);
+                    ans = 1;
+                    int--;
+                    break;
+            }
+            int++;
+        }
+    }
+    var anss = chut[0];
+    for (let index = 1; index < chut.length; index++) {
+        if ((Number(chut[index]))) {
+            index++;
+        }
+        else{
+            switch (array[index]) {
+                case '+':
+                    anss+=array[index+1];
+                    break;
+                case '-':
+                    anss-=array[index+1];
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    console.log(array);
+    console.log(chut);
+    console.log(anss);
+    return anss ;
+    
+}
+
+function abccc(array) {
+    redesign(array);
+    console.log(array);
+    var solution = solvescientific(array);
+    var ss = solution;
+    var k = 0;
+    while ((solution%1!=0)&&(k<8)) {
+        k++;
+        solution*=10;
+        console.log(solution);
+    }
+
+
+    number.innerHTML  = ss.toFixed(k);
+    
+    // clearr();
+    left = 0;
+    operation = 0;
+    // symbol.innerHTML = "";
+    // number.innerHTML = 0;
+    scientificarray = [];
+    scientificnums = 0;
+    decimal = 0;
+}
+// console.log(scientificarray);
+// console.log(scientificarray);
+// redesign(scientificarray);
+// console.log(scientificarray);
+
+// console.log(scientificarray);
+// console.log(solvescientific(scientificarray));
+
+
+equal.addEventListener("click", () => {
+    if (pull.innerHTML == 'scientific calc') {
+        calculate();
+    } else {
+        abccc(scientificarray);
+    }
+});
+
+
+
+
+
+
+
+//calculate 
 
 
 //calculator code
