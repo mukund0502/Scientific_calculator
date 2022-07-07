@@ -128,8 +128,8 @@ setInterval(() => {
 var scientificarray = [];
 scientificnums = 0;
 var decimal = 0;
-
 var operation = 0;
+
 function numberadding(n) {
     left *= 10;
     left += n;
@@ -213,10 +213,10 @@ function calculate() {
     symbol.innerHTML = "=";
 }
 
-function scientificcalculate() {
-    //left part 
-    console.log(scientificarray.join(""));
-}
+// function scientificcalculate() {
+//     //left part 
+//     console.log(scientificarray.join(""));
+// }
 // function clear() {
 //     left = 0;
 //     operation = 0;
@@ -321,14 +321,15 @@ function clearr() {
     scientificnums = 0;
     decimal = 0;
 }
+
 function backspace() {
     decimal = 0;
     scientificarray.pop();
     scientificnums = 0;
     number.innerHTML = scientificarray.join("");
 }
-clear.addEventListener("click", () => clearr());
 
+clear.addEventListener("click", () => clearr());
 log.addEventListener("click", () => addscientific(log.innerHTML));
 ln.addEventListener("click", () => addscientific(ln.innerHTML));
 sin.addEventListener("click", () => addscientific(sin.innerHTML));
@@ -346,8 +347,8 @@ power.addEventListener("click", () => backspace());
 
 
 //example
-arr = [88,'+',98.54,'sin(',32,'sin(',32,')',')',"cos(",876,')','+',4,'!'];
-console.log(arr);
+// arr = [88,'+',98.54,'sin(',32,'sin(',32,')',')',"cos(",876,')','+',4,'!'];
+// console.log(arr);
 function factorial(n){
     var sol = n;
     if (Number(n) && (n%1==0)) {
@@ -360,6 +361,7 @@ function factorial(n){
     return sol;
 
 }
+
 var ekavalue = Math.E;
 var pikavalue = Math.PI;
 
@@ -622,14 +624,6 @@ function abccc(array) {
     scientificarray.push(ss);
     decimal = 0;
 }
-// console.log(scientificarray);
-// console.log(scientificarray);
-// redesign(scientificarray);
-// console.log(scientificarray);
-
-// console.log(scientificarray);
-// console.log(solvescientific(scientificarray));
-
 
 equal.addEventListener("click", () => {
     if (pull.innerHTML == 'scientific calc') {
@@ -638,13 +632,6 @@ equal.addEventListener("click", () => {
         abccc(scientificarray);
     }
 });
-
-
-
-
-
-
-
 //calculate 
 
 
