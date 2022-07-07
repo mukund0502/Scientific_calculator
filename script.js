@@ -40,6 +40,10 @@ const power = document.getElementById("power");
 
 const calc = document.getElementById("calc");
 
+var whattocalculate = document.getElementById("whattocalculate");
+
+console.log(whattocalculate);
+
 var left = parseFloat(number.innerHTML);
 
 
@@ -61,6 +65,7 @@ pull.addEventListener("click", () => {
         pull.innerHTML = "scientific calc";
         calc.style.backgroundColor = "rgb(203,213,225)";
         pull.style.backgroundColor = "rgb(203,213,225)";
+        // whattocalculate.style.display = "none";
         clearr();
     }
 
@@ -230,7 +235,7 @@ function addscientific(n) {
         //log ln cos tan sin root 
         scientificarray.push(n + '(');
     }
-    else if ((n == fact.innerHTML) || (n == percent.innerHTML)) {
+    else if ((n == fact.innerHTML) ) {
         // ! (factorial)
         if (scientificarray.length != 0) {
 
@@ -241,6 +246,18 @@ function addscientific(n) {
 
         }
     }
+    else if ((n == percent.innerHTML) ) {
+        // ! (factorial)
+        if (scientificarray.length != 0) {
+
+            scientificarray.push('%');
+        }
+        else {
+            number.innerHTML = "0";
+
+        }
+    }
+    
     else if ((n == e.innerHTML) || (n == pi.innerHTML) || (n == leftbrac.innerHTML) || (n == rightbrac.innerHTML)) {
         // e pi ( )
         scientificarray.push(n);
@@ -320,6 +337,7 @@ function clearr() {
     scientificarray = [];
     scientificnums = 0;
     decimal = 0;
+    whattocalculate.innerHTML=null;
 }
 
 function backspace() {
@@ -349,16 +367,19 @@ power.addEventListener("click", () => backspace());
 //example
 // arr = [88,'+',98.54,'sin(',32,'sin(',32,')',')',"cos(",876,')','+',4,'!'];
 // console.log(arr);
+var key = true;
 function factorial(n){
     var sol = n;
+    console.log(n);
     if (Number(n) && (n%1==0)) {
         while (n>1) {
             n--;
             sol *=n;
         }
     }
-
+    
     return sol;
+    
 
 }
 
@@ -366,30 +387,38 @@ var ekavalue = Math.E;
 var pikavalue = Math.PI;
 
 function redesign(array) {
+    var left = 0,right=0;
     for (let index = 0; index < array.length; index++) {
         switch (array[index]) {
-            case sin.innerHTML:
+            case sin.innerHTML+'(':
                 array[index] = "sin(";
+                left++;
                 break;
         
-            case cos.innerHTML:
+            case cos.innerHTML+'(':
                 array[index] = "cos(";
+                left++;
                 break;
         
-            case tan.innerHTML:
+            case tan.innerHTML+'(':
                 array[index] = "tan(";
+                left++;
+                console.log("tan");
                 break;
         
-            case log.innerHTML:
+            case log.innerHTML+'(':
                 array[index] = "log(";
+                left++;
                 break;
         
-            case ln.innerHTML:
+            case ln.innerHTML+'(':
                 array[index] = "ln(";
+                left++;
                 break;
         
-            case root.innerHTML:
-                array[index] = "rt";
+            case root.innerHTML+'(':
+                array[index] = "rt(";
+                left++;
                 break;
         
             case pi.innerHTML:
@@ -428,6 +457,19 @@ function redesign(array) {
             default:
                 break;
         }
+        if (array[index]=='(') {
+            left++;
+        }
+        if (array[index]==')') {
+            right++;
+        }
+        
+
+    }
+    console.log(" LR : "+left+" " +right);
+    for (let index = 0; index < left-right; index++) {
+        
+        array.push(')');
     }
 }
 
@@ -436,28 +478,28 @@ function solvescientific(array) {
     var ans = 1;
     for (let index = 0; index < array.length; index++) {
         switch (array[index]) {
-            case sin.innerHTML+'(':
+            case "sin(":
                 array[index] = "sin";
                 array.splice(index+1,0,'(');
                 break;
-            case log.innerHTML+'(':
+            case "log(":
                 array[index] = "log";
             array.splice(index+1,0,'(');
                 break;
-            case ln.innerHTML+'(':
+            case "ln(":
                 array[index] = "ln";
             array.splice(index+1,0,'(');
                 break;
-            case tan.innerHTML+'(':
+            case "tan(":
                 array[index] = "tan";
             array.splice(index+1,0,'(');
                 break;
-            case cos.innerHTML+'(':
+            case "cos(":
                 array[index] = "cos";
             array.splice(index+1,0,'(');
                 break;
-            case root.innerHTML+'(':
-                array[index] = "&#8730";
+            case "rt(":
+                array[index] = "rt";
             array.splice(index+1,0,'(');
                 break;
             default:
@@ -600,7 +642,10 @@ function solvescientific(array) {
 }
 
 function abccc(array) {
+    console.log(array);
+    whattocalculate.innerHTML = array.join("");
     redesign(array);
+    console.log("redesign");
     console.log(array);
     var solution = solvescientific(array);
     var ss = solution;
@@ -611,9 +656,12 @@ function abccc(array) {
         console.log(solution);
     }
 
-
-    number.innerHTML  = ss.toFixed(k);
-    
+    if (key == false) {
+        number.innerHTML = "Invalid input";
+    }else{
+        number.innerHTML  = ss.toFixed(k);
+    }
+    symbol.innerHTML = "=";
     // clearr();
     left = 0;
     operation = 0;

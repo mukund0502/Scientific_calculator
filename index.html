@@ -20,13 +20,15 @@
     <br>    
     <div class="date w-fit mx-auto my-0 text-lg" id="date"></div>
     <div>
-        <div class="notice  ">Scientific Calculator is under progress</div>
+        <!-- <div class="notice  ">Scientific Calculator is under progress</div> -->
         <div
             id="calc" class="w-fit m-auto mt-5 border-emerald-800 p-2 py-3 text-black bg-slate-300 rounded-lg shadow-2xl transition-all duration-300 ease-in">
-            <div
-                class="display rounded-md h-14 w-full text-4xl my-3 mb-5 bg-white align-middle px-1 py-auto flex flex-row select-none shadow-lg ">
-                <div id="symbol" class=" w-1/10 h-full align-middle text-2xl text-left "></div>
-                <div id="number" class=" w-full h-full align-middle text-right select-none ">0</div>
+            <div class="fulldisplay flex flex-col">
+                <div class=" text-lg font-sans flex text-right ml-auto" id="whattocalculate"></div>
+                <div class="display rounded-md h-14 w-full text-4xl my-3 mb-5 bg-white align-middle px-1 py-auto flex flex-row select-none shadow-lg ">
+                    <div id="symbol" class=" w-1/10 h-full align-middle text-2xl text-left "></div>
+                    <div id="number" class=" w-full h-full align-middle text-right select-none ">0</div>
+                </div>
             </div>
             <div class="buttons flex flex-col w-fit m-auto transition-all ease-in duration-200">
                 <div class="rows scientific1 flex-row w-fit transition-all duration-200 ease-out" id="scientific">
