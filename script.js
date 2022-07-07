@@ -618,7 +618,8 @@ function abccc(array) {
     // symbol.innerHTML = "";
     // number.innerHTML = 0;
     scientificarray = [];
-    scientificnums = 0;
+    scientificnums = ss;
+    scientificarray.push(ss);
     decimal = 0;
 }
 // console.log(scientificarray);
