@@ -641,11 +641,11 @@ function abccc(array) {
         console.log(solution);
     }
 
-    if (key == false) {
-        number.innerHTML = "Invalid input";
-    }else{
-        number.innerHTML  = ss.toFixed(k);
-    }
+    // if (key == false) {
+    //     number.innerHTML = "Invalid input";
+    // }else{
+    // }
+    number.innerHTML  = ss.toFixed(k);
     symbol.innerHTML = "=";
     // clearr();
     left = 0;
