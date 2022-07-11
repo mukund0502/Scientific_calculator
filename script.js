@@ -75,24 +75,9 @@ pull.addEventListener("click", () => {
 
 var timee = new Date();
 month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-var str = "th";
 
-switch (timee.getDate() % 10) {
-    case 1:
-        str = "st";
-        break;
-    case 2:
-        str = "nd"
-        break;
-    case 3:
-        str = "rd"
-        break;
-    default:
-        str = "th"
-        break;
-}
 
-date.innerHTML = timee.getDate() + str + " " + month[timee.getMonth()] + " " + timee.getFullYear();
+date.innerHTML = timee.getDate()  + " " + month[timee.getMonth()] + " " + timee.getFullYear();
 setInterval(() => {
     var amorpm = "PM";
     if (timee.getHours() < 13) {
