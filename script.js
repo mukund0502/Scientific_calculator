@@ -100,12 +100,13 @@ setInterval(() => {
     }
     timee = new Date();
     var hour;
-    if (timee.getHours() == 0) {
-        hour = '00'
-    } else if (timee.getHours() < 10) {
-        hour = '0' + timee.getHours()
-    } else {
-        hour = timee.getHours();
+    hour = timee.getHours()%12;
+    if (hour==0) {
+        hour = 12;
+    }else{
+        if (hour<10) {
+            hour = `0${hour}`;
+        }
     }
     var min;
     if (timee.getMinutes() == 0) {
@@ -124,7 +125,7 @@ setInterval(() => {
         sec = timee.getSeconds();
     }
     // console.log(min);
-    time.innerHTML = (timee.getHours() % 12 < 10 ? ("0" + timee.getHours() % 12) : (timee.getHours() % 12)) + ":" + min + ":" + sec + " " + amorpm;
+    time.innerHTML = hour + ":" + min + ":" + sec + " " + amorpm;
 }, 1000);
 
 //timedate ended
@@ -329,6 +330,8 @@ function clearr() {
     scientificnums = 0;
     decimal = 0;
     whattocalculate.innerHTML=null;
+    process = true;
+
 }
 
 function backspace() {
@@ -354,6 +357,8 @@ leftbrac.addEventListener("click", () => addscientific(leftbrac.innerHTML));
 percent.addEventListener("click", () => addscientific(percent.innerHTML));
 power.addEventListener("click", () => backspace());
 
+var process = true;
+
 function factorial(n){
     var sol = n;
     console.log(n);
@@ -362,6 +367,9 @@ function factorial(n){
             n--;
             sol *=n;
         }
+    }
+    else{
+        process = false;
     }
     
     return sol;
@@ -552,7 +560,7 @@ function solvescientific(array) {
                 array[index] = Math.log2(array[index+1]);
                 array.splice(index+1,1);
                 break;
-            case "&#8730":
+            case "rt":
                 array[index] = Math.sqrt(array[index+1]);
                 array.splice(index+1,1);
                 break;
@@ -634,18 +642,26 @@ function abccc(array) {
     console.log(array);
     var solution = solvescientific(array);
     var ss = solution;
-    var k = 0;
-    while ((solution%1!=0)&&(k<8)) {
-        k++;
-        solution*=10;
-        console.log(solution);
-    }
+    ss = ss.toFixed(6);
+    // var k = 0;
+    // while ((solution%1!=0)&&(k<8)) {
+    //     k++;
+    //     solution*=10;
+    //     console.log(solution);
+    // }
 
     // if (key == false) {
     //     number.innerHTML = "Invalid input";
     // }else{
     // }
-    number.innerHTML  = ss.toFixed(k);
+    if (process == false) {
+        
+        number.innerHTML  = "Invalid Input";
+        process = true;
+    }
+    else{
+        number.innerHTML = ss;
+    }
     symbol.innerHTML = "=";
     // clearr();
     left = 0;
